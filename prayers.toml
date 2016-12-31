@@ -1,0 +1,282 @@
+# TOML
+# Definition of Prayers
+
+[prayers]
+ [prayers.signofthecross]
+ name = "Sign of the Cross"
+ text = "In the Name of the Father, and of the Son, and of the Holy Spirit"
+ filename = "SignOfTheCross"
+
+ [prayers.openmylips]
+ name = "Open My Lips"
+ text = "O Lord, open my lips; O God, come to my aid; O Lord, make haste to help me"
+ filename = "OpenMyLips"
+
+ [prayers.apostlescreed]
+ name = "Apostle's Creed"
+ filename = "ApostlesCreed"
+
+ # Lord's Prayer/Our Father
+ [prayers.ourfather]
+ name = "Our Father" 
+ filename = "OurFather"
+
+ [prayers.ourfather.options.1]
+ name = "Our Father, full prayer"
+ filename = "OurFather"
+
+ [prayers.ourfather.options.2]
+ name = "Our Father, call/response"
+ filenames = [ "OurFatherCall", "OurFatherResponse" ]
+
+ [prayers.hailmary]
+ name = "Hail Mary"
+ filename = "HailMary"
+
+ [prayers.hailmary.options.1]
+ name = "Hail Mary, full prayer"
+ filename = "HailMary"
+
+ [prayers.hailmary.options.2]
+ name = "Hail Mary, call/response"
+ filenames = ["HailMaryCall", "HailMaryResponse"]
+
+ [prayers.hailmary.options.3]
+ name = "Hail Mary, call/response split"
+ filenames = ["HailMaryCall", "HolyMaryPrayForUsSinners", "HolyMaryNowAndInTheHour"]
+
+ [prayers.hailmary.options.4]
+ name = "Hail Mary, call/response with Flame of Love"
+ filenames = ["HailMaryCall", "HolyMaryPrayForUsSinners", "FlameOfLove", "HolyMaryNowAndInTheHour"]
+
+ [prayers.glorybe]
+ name = "Glory Be"
+ filename = "GloryBe"
+
+ [prayers.glorybe.options.1]
+ name = "Glory Be, full prayer"
+ filename = "GloryBe"
+
+ [prayers.glorybe.options.2]
+ name = "Glory Be, call/response"
+ filenames = [ "GloryBeCall", "GloryBeResponse" ]
+
+ [prayers.faith]
+ name = "Invocation of Faith before Hail Mary"
+ filename = "Faith"
+
+ [prayers.hope]
+ name = "Invocation of Hope before Hail Mary"
+ filename = "Hope"
+
+ [prayers.love]
+ name = "Invocation of Love before Hail Mary"
+ filename = "Love"
+
+ [prayers.faithfuldeparted]
+ name = "Faithful Departed"
+ text = "May the souls of the faithful departed through the mercy of God rest in peace."
+ filename = "FaithfulDeparted"
+
+ [prayers.announcegroup]
+ name = "Announce Group"
+ desc = "Announce group of Mysteries (Joyful, Luminous, Sorrowful, Glorious)"
+ filename = "Announce{{.Group}}"
+
+ [prayers.announcemystery]
+ name = "Announce Mystery"
+ desc = "Announce the mystery before each decade"
+ filename = "Announce{{.Mystery}}"
+
+ [prayers.meditation]
+ name = "Call to Meditation"
+ desc = "Meditation for each mystery"
+ filename = "Meditation{{.Mystery}}"
+
+ [prayers.meditation.options.1]
+ name = "Call to Meditation, named by Mystery"
+ filename = "Meditation{{.Mystery}}"
+
+ [prayers.meditation.options.2]
+ name = "Call to Meditation, named by Group and Mystery Number"
+ filename = "Meditation{{.Group}}{{.MysteryNum}}"
+
+ [prayers.deepmeditation]
+ name = "Meditation before each Hail Mary"
+ filename = "Meditation{{.Mystery}}{{.HailMaryNum}}"
+
+ [prayers.intentionsforrosary]
+ name = "Intentions for Rosary"
+ desc = "Call and pause for intentions prior to Rosary"
+ filename = "RosaryIntentions"
+
+ [prayers.intentionsformystery]
+ name = "Intentions for Mystery"
+ desc = "Call and pause for intentions prior to Mystery"
+ filename = "Intentions{{.Mystery}}"
+
+ [prayers.hailholyqueen]
+ name = "Salve Regina/Hail Holy Queen"
+ text = "Hail, holy Queen, Mother of Mercy! Our life, our sweetness, and our hope! To thee do we cry, poor banished children of Eve; to thee do we send our sighs, mourning and weeping in this valley of tears. Turn then, most gracious Advocate, thine eyes of mercy toward us, and after this our exile show unto us the blessed fruit of thy womb, Jesus.  O clement, O loving, O sweet Virgin Mary. Pray for us, O holy Mother of God that we may be made worthy of the promises of Christ."
+ filename = "HailHolyQueen"
+
+ [prayers.hailholyqueen.options.1]
+ name = "Hail Holy Queen, full prayer"
+ filename = "HailHolyQueen"
+
+ [prayers.hailholyqueen.options.2]
+ name = "Hail Holy Queen, call/response"
+ filenames = ["HailHolyQueenCall", "HailHolyQueenResponse"]
+
+ [prayers.marianlitany]
+ name = "Litany of the Blessed Virgin Mary"
+ filename = "MarianLitany"
+
+ [prayers.ohmyjesus]
+ name = "Oh My Jesus/Fatima Prayer"
+ text = "Oh my Jesus, forgive us our sins, save us from the fires of hell, lead all souls to Heaven, especially those most in need of Thy mercy. Amen."
+ filename = "OhMyJesus"
+
+ [prayers.fatimapardon]
+ name = "Fatima Pardon Prayer/My God I Believe"
+ text = "My God, I believe, I adore, I hope and I love Thee! I beg pardon for all those that do not believe, do not adore, do not hope and do not love Thee."
+ filename = "MyGodIBelieve"
+
+ [prayers.letuspray]
+ name = "Oh God, whose only begotten son"
+ text = "Let us pray. O God, whose only begotten Son, by His life, death, and resurrection, has purchased for us the rewards of everlasting life, grant, we beseech Thee, that meditating upon these mysteries of the Most Holy Rosary of the Blessed Virgin Mary, we may imitate what they contain and obtain what they promise, through the same Christ Our Lord. Amen."
+ filename = "LetUsPray"
+
+ [prayers.memorare]
+ name = "Memorare"
+ text = "Remember, O most gracious Virgin Mary, that never was it known that anyone who fled to thy protection, implored thy help, or sought thy intercession, was left unaided. Inspired with this confidence, I fly unto thee, O Virgin of Virgins, my Mother. To thee do I come, before thee I stand, sinful and sorrowful. O Mother of the Word Incarnate, despise not my petitions, but in thy mercy hear and answer me.  Amen."
+ filename = "Memorare"
+
+ [prayers.stmichael]
+ name = "Prayer to St. Michael"
+ text = "St. Michael the Archangel, defend us in our day of battle, be our safeguard against the wickedness and snares of the devil. May God rebuke him, we humbly pray. And do thou, O prince of the heavenly host, by the power of God, thrust into hell Satan and all evil spirits who wander through this world seeking the ruin of souls. Amen."
+ filename = "StMichael"
+
+ [prayers.popesintentions]
+ name = "Prayer for the intentions of the Pope"
+ filename = "IntentionsOfThePope"
+
+ [prayers.unborn]
+ name = "Prayer for Unborn"
+ text = "Jesus, protect and save the unborn."
+ filename = "Unborn"
+
+ [prayers.jesusflameoflove]
+ name = "Jesus' Prayer to Blind Satan"
+ text = "May our feet journey together, May our hands gather in unity, May our hearts beat to the same rhythm, May our souls be in harmony, May our thoughts be in unison, May our ears listen to the silence together, May our glances melt in one another, And may our lips beg Our Heavenly Father, together, to obtain Mercy. Amen."
+ filename = "BlindSatan"
+
+ [prayers.jesusitrustinyou]
+ name = "Jesus, I trust in you"
+ text = "Jesus, I trust in you."
+
+ [prayers.avemariainterjection]
+ name = "Ave Maria Interjection
+ text = "Ave, ave, ave Maria. (sung)"
+
+ [prayers.unitedhearts]
+ name = "United Hearts of Jesus and Mary"
+ text = "Oh United Hearts of Jesus and Mary, You are all grace, all mercy, all love. Let my heart be joined to Yours, so that my every need is present in Your United Hearts. Most especially, shed Your grace upon this particular need... (State your need here.) Help me to recognize and accept Your loving will in my life. Holy and Sacred Wounds of the United Hearts of Jesus and Mary, answer my prayer. Amen."
+
+[mystery]
+
+ [mystery.1]
+ name = "Annunciation"
+ 
+ [mystery.2]
+ name = "Visitation"
+
+ [mystery.3]
+ name = "Nativity"
+ 
+ [mystery.4]
+ name = "Presentation"
+ desc = "Presentation of Jesus at the Temple"
+
+ [mystery.5]
+ name = "Finding"
+ desc = "Finding of Jesus in the Temple"
+
+ [mystery.6]
+ name = "Agony"
+ desc = "Agony in the Garden"
+
+ [mystery.7]
+ name = "Scourging"
+ desc = "Scourging at the Pillar"
+
+ [mystery.8]
+ name = "Crowning"
+ desc = "Crowning with Thorns"
+
+ [mystery.9]
+ name = "Carrying"
+ desc = "Carrying of the Cross"
+
+ [mystery.10]
+ name = "Crucifixion"
+ desc = "Crucifixion and Death of Our Lord"
+
+ [mystery.11]
+ name = "Resurrection"
+ 
+ [mystery.12]
+ name = "Ascension"
+
+ [mystery.13]
+ name = "Descent"
+ desc = "Descent of the Holy Spirit"
+
+ [mystery.14]
+ name = "Assumption"
+ desc = "Assumption of Blessed Virgin Mary into Heaven"
+
+ [mystery.15]
+ name = "Coronation"
+ desc = "Coronation of Blessed Virgin Mary as Queen of Heaven and Earth"
+
+ [mystery.16]
+ name = "Baptism"
+ desc = "Baptism of Jesus in the Jordan River"
+
+ [mystery.17]
+ name = "WeddingAtCana"
+ desc = "Wedding at Cana"
+
+ [mystery.18]
+ name = "Kingdom"
+ desc = "Jesus' Proclamation of the Kingdom of God"
+
+ [mystery.19]
+ name = "Transfiguration"
+ 
+ [mystery.20]
+ name = "Eucharist"
+ desc = "Institution of the Eucharist"
+
+[group]
+
+ [group.joyful]
+ name = "Joyful"
+ mysteries = [ 1, 2, 3, 4, 5 ]
+ order = 1
+
+ [group.luminous]
+ name = "Luminous"
+ mysteries = [ 16,17,18,19,20 ]
+ order = 2
+
+ [group.sorrowful]
+ name = "Sorrowful"
+ mysteries = [ 6, 7, 8, 9, 10 ]
+ order = 3
+
+ [group.glorious]
+ name = "Glorious"
+ mysteries = [ 11,12,13,14,15 ]
+ order = 4

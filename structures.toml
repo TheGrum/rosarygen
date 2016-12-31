@@ -1,0 +1,27 @@
+# TOML
+# Definition of Rosary structures
+
+[structure]
+ [structure.basic]
+ name = "Basic Rosary"
+ preamble = [ "signofthecross", "apostlescreed", "ourfather", "hailmary", "hailmary", "hailmary", "glorybe" ]
+ group = [ "announcegroup" ]
+ mystery = [ "announcemystery", "ourfather", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "glorybe" ]
+ postamble = [ "hailholyqueen", "signofthecross" ]
+
+ [structure.extended]
+ name = "Extended Rosary"
+ preamble = [ "signofthecross", "apostlescreed", "intentionsforrosary", "ourfather", "faith", "hailmary", "hope", "hailmary", "love", "hailmary", "glorybe" ]
+ group = [ "announcegroup" ]
+ mystery = [ "announcemystery", "ourfather", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "glorybe" ]
+ postamble = [ "hailholyqueen", "marianlitany", "letuspray", "stmichael", "signofthecross" ]
+
+
+ [structure.fatima]
+ name = "Extended Rosary with Fatima prayers"
+ preamble = [ "signofthecross", "apostlescreed", "intentionsforrosary", "ourfather", "faith", "hailmary", "hope", "hailmary", "love", "hailmary", "glorybe", "ohmyjesus" ]
+ group = [ "announcegroup" ]
+ mystery = [ "announcemystery", "ourfather", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "glorybe", "ohmyjesus", "fatimapardon" ]
+ postamble = [ "hailholyqueen", "marianlitany", "letuspray", "stmichael", "signofthecross" ]
+
+
