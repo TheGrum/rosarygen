@@ -122,6 +122,8 @@ Suitable for CD Track titles:
  * MysteryNum - this is the mystery number from the configuration file, NOT a counting number. It can be out of order.
  * PrayerNum - counts up
  * HailMaryNum - counts Hail Mary's within a Mystery
+ * XthGroupMystery - function that returns the commonly used 'First/Second/Third/etc Joyful/Sorrowful/etc Mystery' form of name.
+ * CDTrack - provides an easier CD track title using a file number formatted with 2 digits including a leading zero so that alphabetical sorting gives the proper order. If you need 3 or more digits, see the CD Track example above for the in-template way of doing this, where you can change the 02 to the desired number of digits.
 
 ## Effect
 
