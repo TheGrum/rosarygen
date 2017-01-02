@@ -7,6 +7,7 @@ import (
 	"log"
 	"os"
 	"path/filepath"
+	"strconv"
 	"strings"
 	"text/template"
 )
@@ -16,9 +17,11 @@ type StateTracker struct {
 	OutputDir string
 	Format    string
 
-	Group   string // Preamble/[Group]/Postamble
-	Mystery string
-	Prayer  string
+	Group         string // Preamble/[Group]/Postamble
+	DecadeNumWord string
+	Mystery       string
+	MysteryPhrase string
+	Prayer        string
 
 	OutputFileNum int
 	InputFileNum  int
@@ -65,4 +68,48 @@ func (s *StateTracker) MatchActualFile(filename string) (string, error) {
 		}
 	}
 	return fname, errors.New(fmt.Sprintf("File '%v' was not found in any input directory.", fname))
+}
+
+func (s *StateTracker) SetDecadeNumWord(num int) {
+	switch num {
+	case 0:
+		s.DecadeNumWord = ""
+	case 1:
+		s.DecadeNumWord = "First"
+	case 2:
+		s.DecadeNumWord = "Second"
+	case 3:
+		s.DecadeNumWord = "Third"
+	case 4:
+		s.DecadeNumWord = "Fourth"
+	case 5:
+		s.DecadeNumWord = "Fifth"
+	case 6:
+		s.DecadeNumWord = "Sixth"
+	case 7:
+		s.DecadeNumWord = "Seventh"
+	case 8:
+		s.DecadeNumWord = "Eighth"
+	case 9:
+		s.DecadeNumWord = "Ninth"
+	case 10:
+		s.DecadeNumWord = "Tenth"
+	default:
+		s.DecadeNumWord = strconv.Itoa(num)
+	}
+}
+
+func (s *StateTracker) XthGroupMystery() string {
+	switch s.Group {
+	case "Preamble":
+		return "Preamble"
+	case "Postamble":
+		return "Postamble"
+	default:
+		return s.DecadeNumWord + " " + s.Group + " Mystery"
+	}
+}
+
+func (s *StateTracker) CDTrack() string {
+	return fmt.Sprintf("%02d %s", s.OutputFileNum, s.XthGroupMystery())
 }

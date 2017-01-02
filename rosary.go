@@ -60,9 +60,10 @@ func (r *Rosary) ForEachFile(idirs []string, odir string, outputFilename string,
 		OutputDir: odir,
 		Format:    format,
 
-		Group:   "Preamble",
-		Mystery: "",
-		Prayer:  "",
+		Group:         "Preamble",
+		DecadeNumWord: "",
+		Mystery:       "",
+		Prayer:        "",
 
 		OutputFileNum: 0,
 		InputFileNum:  0,
@@ -83,6 +84,8 @@ func (r *Rosary) ForEachFile(idirs []string, odir string, outputFilename string,
 	}
 	s.Group = "Postamble"
 	s.GroupNum += 1
+	s.MysteryNum = 0
+	s.Mystery = ""
 	for _, p := range r.Postamble {
 		p.ForEachFile(o, s, f)
 	}
@@ -117,12 +120,31 @@ func (d *Decade) GetPrayers() []*Prayer {
 func (d *Decade) ForEachFile(o OptionProvider, s *StateTracker, f func(filename string, p *Prayer, s *StateTracker)) {
 	s.GroupNum += 1
 	s.Group = d.Name
+	s.HailMaryNum = 0
+	i := 1
+	s.SetDecadeNumWord(1)
+	if len(d.Mysteries) > 0 {
+		s.MysteryNum = d.Mysteries[0].Num
+
+		s.Mystery = d.Mysteries[0].Name
+		s.MysteryPhrase = s.Mystery + " Mystery"
+	} else {
+		s.MysteryNum = 0
+		s.Mystery = ""
+		s.MysteryPhrase = ""
+	}
 	for _, p := range d.Group {
 		p.ForEachFile(o, s, f)
 	}
 	for _, m := range d.Mysteries {
+		s.SetDecadeNumWord(i)
 		m.ForEachFile(o, s, f)
+		i += 1
 	}
+	s.MysteryNum = 0
+	s.Mystery = ""
+	s.MysteryPhrase = ""
+	s.SetDecadeNumWord(0)
 }
 
 type Mystery struct {
@@ -155,9 +177,12 @@ func (m *Mystery) GetPrayers() []*Prayer {
 func (m *Mystery) ForEachFile(o OptionProvider, s *StateTracker, f func(filename string, p *Prayer, s *StateTracker)) {
 	s.MysteryNum = m.Num
 	s.Mystery = m.Name
+	s.MysteryPhrase = s.Mystery + " Mystery"
+	s.HailMaryNum = 0
 	for _, p := range m.Prayers {
 		p.ForEachFile(o, s, f)
 	}
+	s.HailMaryNum = 0
 }
 
 type Group struct {

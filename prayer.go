@@ -71,12 +71,12 @@ func (p *Prayer) GetChosenFilenames(o OptionProvider) []string {
 
 func (p *Prayer) ForEachFile(o OptionProvider, s *StateTracker, f func(filename string, p *Prayer, s *StateTracker)) {
 	s.PrayerNum += 1
+	if p.Key == "hailmary" {
+		s.HailMaryNum += 1
+	}
 	r := p.GetChosenFilenames(o)
 	for _, file := range r {
 		s.InputFileNum += 1
-		if p.Key == "hailmary" {
-			s.HailMaryNum += 1
-		}
 		s.Prayer = p.Key
 		ofile := s.Apply(file)
 		f(ofile, p, s)
@@ -89,6 +89,14 @@ func PrintFilename(filename string, p *Prayer, s *StateTracker) {
 	if filename != "" {
 		fmt.Println(filename)
 	}
+}
+
+func PrintActualFilename(filename string, p *Prayer, s *StateTracker) {
+	if filename == "" {
+		return
+	}
+	actual, _ := s.MatchActualFile(filename)
+	fmt.Printf("%v: %v\n", filename, actual)
 }
 
 func GetFiles(ch chan *FileStack) func(filename string, p *Prayer, s *StateTracker) {

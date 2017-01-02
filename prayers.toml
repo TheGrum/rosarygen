@@ -1,187 +1,271 @@
 # TOML
 # Definition of Prayers
 
-[prayers]
- [prayers.signofthecross]
+[prayer]
+ [prayer.signofthecross]
  name = "Sign of the Cross"
  text = "In the Name of the Father, and of the Son, and of the Holy Spirit"
  filename = "SignOfTheCross"
 
- [prayers.openmylips]
+ [prayer.openmylips]
  name = "Open My Lips"
  text = "O Lord, open my lips; O God, come to my aid; O Lord, make haste to help me"
  filename = "OpenMyLips"
 
- [prayers.apostlescreed]
+ [prayer.apostlescreed]
  name = "Apostle's Creed"
  filename = "ApostlesCreed"
 
+ [prayer.nicenecreed]
+ name = "Nicene Creed"
+ filename = "NiceneCreed"
+
  # Lord's Prayer/Our Father
- [prayers.ourfather]
+ [prayer.ourfather]
  name = "Our Father" 
  filename = "OurFather"
 
- [prayers.ourfather.options.1]
+ [prayer.ourfather.options.1]
  name = "Our Father, full prayer"
  filename = "OurFather"
 
- [prayers.ourfather.options.2]
+ [prayer.ourfather.options.2]
  name = "Our Father, call/response"
  filenames = [ "OurFatherCall", "OurFatherResponse" ]
 
- [prayers.hailmary]
+ [prayer.hailmary]
  name = "Hail Mary"
  filename = "HailMary"
 
- [prayers.hailmary.options.1]
+ [prayer.hailmary.options.1]
  name = "Hail Mary, full prayer"
  filename = "HailMary"
 
- [prayers.hailmary.options.2]
+ [prayer.hailmary.options.2]
  name = "Hail Mary, call/response"
  filenames = ["HailMaryCall", "HailMaryResponse"]
 
- [prayers.hailmary.options.3]
+ [prayer.hailmary.options.3]
  name = "Hail Mary, call/response split"
  filenames = ["HailMaryCall", "HolyMaryPrayForUsSinners", "HolyMaryNowAndInTheHour"]
 
- [prayers.hailmary.options.4]
+ [prayer.hailmary.options.4]
  name = "Hail Mary, call/response with Flame of Love"
- filenames = ["HailMaryCall", "HolyMaryPrayForUsSinners", "FlameOfLove", "HolyMaryNowAndInTheHour"]
+ filenames = ["HailMaryCall", "HolyMaryPrayForUsSinners", "HolyMaryFlameOfLove", "HolyMaryNowAndAtTheHour"]
 
- [prayers.glorybe]
+ [prayer.glorybe]
  name = "Glory Be"
  filename = "GloryBe"
 
- [prayers.glorybe.options.1]
+ [prayer.glorybe.options.1]
  name = "Glory Be, full prayer"
  filename = "GloryBe"
 
- [prayers.glorybe.options.2]
+ [prayer.glorybe.options.2]
  name = "Glory Be, call/response"
  filenames = [ "GloryBeCall", "GloryBeResponse" ]
 
- [prayers.faith]
+ [prayer.glorybe.options.3]
+ name = "All Glory Be, full prayer"
+ filename = "AllGloryBe"
+
+ [prayer.glorybe.options.4]
+ name = "All Glory Be, call/response"
+ filenames = [ "AllGloryBeCall", "AllGloryBeResponse" ]
+
+ [prayer.faith]
  name = "Invocation of Faith before Hail Mary"
  filename = "Faith"
 
- [prayers.hope]
+ [prayer.hope]
  name = "Invocation of Hope before Hail Mary"
  filename = "Hope"
 
- [prayers.love]
+ [prayer.love]
  name = "Invocation of Love before Hail Mary"
  filename = "Love"
 
- [prayers.faithfuldeparted]
+ [prayer.charity]
+ name = "Invocation of Charity before Hail Mary"
+ filename = "Charity"
+
+ [prayer.faithfuldeparted]
  name = "Faithful Departed"
  text = "May the souls of the faithful departed through the mercy of God rest in peace."
  filename = "FaithfulDeparted"
 
- [prayers.announcegroup]
+ [prayer.announcegroup]
  name = "Announce Group"
  desc = "Announce group of Mysteries (Joyful, Luminous, Sorrowful, Glorious)"
  filename = "Announce{{.Group}}"
 
- [prayers.announcemystery]
+ [prayer.announcemystery]
  name = "Announce Mystery"
  desc = "Announce the mystery before each decade"
  filename = "Announce{{.Mystery}}"
 
- [prayers.meditation]
+ [prayer.meditation]
  name = "Call to Meditation"
  desc = "Meditation for each mystery"
  filename = "Meditation{{.Mystery}}"
 
- [prayers.meditation.options.1]
+ [prayer.meditation.options.1]
  name = "Call to Meditation, named by Mystery"
  filename = "Meditation{{.Mystery}}"
 
- [prayers.meditation.options.2]
+ [prayer.meditation.options.2]
  name = "Call to Meditation, named by Group and Mystery Number"
  filename = "Meditation{{.Group}}{{.MysteryNum}}"
 
- [prayers.deepmeditation]
+ [prayer.deepmeditation]
  name = "Meditation before each Hail Mary"
  filename = "Meditation{{.Mystery}}{{.HailMaryNum}}"
 
- [prayers.intentionsforrosary]
+ [prayer.intentionsforrosary]
  name = "Intentions for Rosary"
  desc = "Call and pause for intentions prior to Rosary"
  filename = "RosaryIntentions"
 
- [prayers.intentionsformystery]
+ [prayer.intentionsformystery]
  name = "Intentions for Mystery"
  desc = "Call and pause for intentions prior to Mystery"
  filename = "Intentions{{.Mystery}}"
 
- [prayers.hailholyqueen]
+ [prayer.hailholyqueen]
  name = "Salve Regina/Hail Holy Queen"
  text = "Hail, holy Queen, Mother of Mercy! Our life, our sweetness, and our hope! To thee do we cry, poor banished children of Eve; to thee do we send our sighs, mourning and weeping in this valley of tears. Turn then, most gracious Advocate, thine eyes of mercy toward us, and after this our exile show unto us the blessed fruit of thy womb, Jesus.  O clement, O loving, O sweet Virgin Mary. Pray for us, O holy Mother of God that we may be made worthy of the promises of Christ."
  filename = "HailHolyQueen"
 
- [prayers.hailholyqueen.options.1]
+ [prayer.hailholyqueen.options.1]
  name = "Hail Holy Queen, full prayer"
  filename = "HailHolyQueen"
 
- [prayers.hailholyqueen.options.2]
+ [prayer.hailholyqueen.options.2]
  name = "Hail Holy Queen, call/response"
- filenames = ["HailHolyQueenCall", "HailHolyQueenResponse"]
+ filenames = ["HailHolyQueenPreCall", "HailHolyQueenCall", "HailHolyQueenResponse"]
 
- [prayers.marianlitany]
+ [prayer.marianlitany]
  name = "Litany of the Blessed Virgin Mary"
  filename = "MarianLitany"
 
- [prayers.ohmyjesus]
+ [prayer.ohmyjesus]
  name = "Oh My Jesus/Fatima Prayer"
  text = "Oh my Jesus, forgive us our sins, save us from the fires of hell, lead all souls to Heaven, especially those most in need of Thy mercy. Amen."
  filename = "OhMyJesus"
 
- [prayers.fatimapardon]
+ [prayer.fatimapardon]
  name = "Fatima Pardon Prayer/My God I Believe"
  text = "My God, I believe, I adore, I hope and I love Thee! I beg pardon for all those that do not believe, do not adore, do not hope and do not love Thee."
  filename = "MyGodIBelieve"
 
- [prayers.letuspray]
+ [prayer.letuspray]
  name = "Oh God, whose only begotten son"
  text = "Let us pray. O God, whose only begotten Son, by His life, death, and resurrection, has purchased for us the rewards of everlasting life, grant, we beseech Thee, that meditating upon these mysteries of the Most Holy Rosary of the Blessed Virgin Mary, we may imitate what they contain and obtain what they promise, through the same Christ Our Lord. Amen."
  filename = "LetUsPray"
 
- [prayers.memorare]
+ [prayer.memorare]
  name = "Memorare"
  text = "Remember, O most gracious Virgin Mary, that never was it known that anyone who fled to thy protection, implored thy help, or sought thy intercession, was left unaided. Inspired with this confidence, I fly unto thee, O Virgin of Virgins, my Mother. To thee do I come, before thee I stand, sinful and sorrowful. O Mother of the Word Incarnate, despise not my petitions, but in thy mercy hear and answer me.  Amen."
  filename = "Memorare"
 
- [prayers.stmichael]
+ [prayer.stmichael]
  name = "Prayer to St. Michael"
  text = "St. Michael the Archangel, defend us in our day of battle, be our safeguard against the wickedness and snares of the devil. May God rebuke him, we humbly pray. And do thou, O prince of the heavenly host, by the power of God, thrust into hell Satan and all evil spirits who wander through this world seeking the ruin of souls. Amen."
  filename = "StMichael"
 
- [prayers.popesintentions]
+ [prayer.popesintentions]
  name = "Prayer for the intentions of the Pope"
  filename = "IntentionsOfThePope"
 
- [prayers.unborn]
+ [prayer.unborn]
  name = "Prayer for Unborn"
  text = "Jesus, protect and save the unborn."
  filename = "Unborn"
 
- [prayers.jesusflameoflove]
+ [prayer.jesusflameoflove]
  name = "Jesus' Prayer to Blind Satan"
  text = "May our feet journey together, May our hands gather in unity, May our hearts beat to the same rhythm, May our souls be in harmony, May our thoughts be in unison, May our ears listen to the silence together, May our glances melt in one another, And may our lips beg Our Heavenly Father, together, to obtain Mercy. Amen."
  filename = "BlindSatan"
 
- [prayers.jesusitrustinyou]
+ [prayer.jesusitrustinyou]
  name = "Jesus, I trust in you"
  text = "Jesus, I trust in you."
+ filename = "JesusITrust"
 
- [prayers.avemariainterjection]
- name = "Ave Maria Interjection
+ [prayer.avemariainterjection]
+ name = "Ave Maria Interjection"
  text = "Ave, ave, ave Maria. (sung)"
+ filename = "AveMariaInter"
 
- [prayers.unitedhearts]
+ [prayer.unitedhearts]
  name = "United Hearts of Jesus and Mary"
  text = "Oh United Hearts of Jesus and Mary, You are all grace, all mercy, all love. Let my heart be joined to Yours, so that my every need is present in Your United Hearts. Most especially, shed Your grace upon this particular need... (State your need here.) Help me to recognize and accept Your loving will in my life. Holy and Sacred Wounds of the United Hearts of Jesus and Mary, answer my prayer. Amen."
+ filename = "UnitedHearts"
+
+ [prayer.unitedheartsshort]
+ name = "United Hearts, short version"
+ text = "United Hearts of Jesus and Mary, triumph and reign, guide and protect us. Let me live in your United Hearts forever and do with me as you will."
+ filename = "UnitedHeartsShort"
+
+ [prayer.actoffaith]
+ name = "Act of Faith"
+ filename = "ActOfFaith"
+
+ [prayer.actofhope]
+ name = "Act of Hope"
+ filename = "ActOfHope"
+
+ [prayer.actofcharity]
+ name = "Act of Charity"
+ filename = "ActOfCharity"
+
+ [prayer.mostholytrinity]
+ name = "Most Holy Trinity"
+ filename = "MostHolyTrinity"
+
+ [prayer.comeholyspirit]
+ name = "Come, Holy Spirit"
+ filename = "ComeHolySpirit"
+
+ [prayer.gloria]
+ name = "Gloria"
+ filename = "Gloria"
+
+ [prayer.magnificat]
+ name = "Magnificat"
+ filename = "Magnificat"
+
+ [prayer.ohmary]
+ name = "Oh, Mary"
+ filename = "OhMary"
+
+ [prayer.augustqueenofheaven]
+ name = "August Queen of Heaven"
+ filename = "AugustQueenOfHeaven"
+
+ [prayer.ourgoodandtendermother]
+ name = "Our good and tender Mother"
+ filename = "OurGoodAndTenderMother"
+
+ [prayer.queenoftheholyrosary]
+ name = "Queen of the Holy Rosary"
+ filename = "QueenOfTheHolyRosary"
+
+ [prayer.queenofheavenrejoice]
+ name = "Queen of Heaven, Rejoice"
+ filename = "QueenOfHeavenRejoice"
+
+ [prayer.divinepraises]
+ name = "The Divine Praises"
+ filename = "DivinePraises"
+
+ [prayer.divinepraises.options.1]
+ name = "The Divine Praises"
+ filename = "DivinePraises"
+
+ [prayer.divinepraises.options.2]
+ name = "The Divine Praises, with silence for response"
+ filename = "TheDivinePraisesCallSilence"
 
 [mystery]
 

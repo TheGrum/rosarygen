@@ -10,12 +10,14 @@ import (
 func ParsePrayers(data *toml.TomlTree) map[string]*Prayer {
 	prayers := make(map[string]*Prayer)
 	//	pbag, _ := data.Query("$.prayers")
-	pbag := data.Get("prayers").(*toml.TomlTree)
-	for _, p := range pbag.Keys() {
-		po := pbag.Get(p).(*toml.TomlTree)
-		prayers[p] = ParsePrayer(p, po)
-		//fmt.Printf("beep: %v,%v,%v\n", i, p, pbag.Get(p))
+	if data.Has("prayer") {
+		pbag := data.Get("prayer").(*toml.TomlTree)
+		for _, p := range pbag.Keys() {
+			po := pbag.Get(p).(*toml.TomlTree)
+			prayers[p] = ParsePrayer(p, po)
+			//fmt.Printf("beep: %v,%v,%v\n", i, p, pbag.Get(p))
 
+		}
 	}
 	return prayers
 }
@@ -38,7 +40,7 @@ func ParsePrayer(key string, po *toml.TomlTree) *Prayer {
 	}
 	if po.Has("options") {
 		list := po.Get("options").(*toml.TomlTree)
-		for i := 1; i < len(list.Keys()); i++ {
+		for i := 1; i <= len(list.Keys()); i++ {
 			po2 := list.Get(strconv.Itoa(i)).(*toml.TomlTree)
 			np.AddOption(ParsePrayer(key, po2))
 		}
@@ -49,12 +51,14 @@ func ParsePrayer(key string, po *toml.TomlTree) *Prayer {
 func ParseStructures(data *toml.TomlTree) map[string]*Structure {
 	structures := make(map[string]*Structure)
 	//	pbag, _ := data.Query("$.prayers")
-	sbag := data.Get("structure").(*toml.TomlTree)
-	for _, s := range sbag.Keys() {
-		so := sbag.Get(s).(*toml.TomlTree)
-		structures[s] = ParseStructure(s, so)
-		//fmt.Printf("beep: %v,%v,%v\n", i, p, pbag.Get(p))
+	if data.Has("structure") {
+		sbag := data.Get("structure").(*toml.TomlTree)
+		for _, s := range sbag.Keys() {
+			so := sbag.Get(s).(*toml.TomlTree)
+			structures[s] = ParseStructure(s, so)
+			//fmt.Printf("beep: %v,%v,%v\n", i, p, pbag.Get(p))
 
+		}
 	}
 	return structures
 }
@@ -90,16 +94,18 @@ func ParseStructure(key string, so *toml.TomlTree) *Structure {
 func ParseMysteries(data *toml.TomlTree) map[string]*Mystery {
 	mysteries := make(map[string]*Mystery)
 	//	pbag, _ := data.Query("$.prayers")
-	sbag := data.Get("mystery").(*toml.TomlTree)
-	for _, s := range sbag.Keys() {
-		so := sbag.Get(s).(*toml.TomlTree)
-		num, err := strconv.Atoi(s)
-		if err != nil {
-			log.Fatalf("Could not parse '%v' as an int.", s)
-		}
-		mysteries[s] = ParseMystery(num, so)
-		//fmt.Printf("beep: %v,%v,%v\n", i, p, pbag.Get(p))
+	if data.Has("mystery") {
+		sbag := data.Get("mystery").(*toml.TomlTree)
+		for _, s := range sbag.Keys() {
+			so := sbag.Get(s).(*toml.TomlTree)
+			num, err := strconv.Atoi(s)
+			if err != nil {
+				log.Fatalf("Could not parse '%v' as an int.", s)
+			}
+			mysteries[s] = ParseMystery(num, so)
+			//fmt.Printf("beep: %v,%v,%v\n", i, p, pbag.Get(p))
 
+		}
 	}
 	return mysteries
 }
@@ -116,12 +122,14 @@ func ParseMystery(num int, so *toml.TomlTree) *Mystery {
 func ParseGroups(data *toml.TomlTree) map[string]*Group {
 	groups := make(map[string]*Group)
 	//	pbag, _ := data.Query("$.prayers")
-	sbag := data.Get("group").(*toml.TomlTree)
-	for _, s := range sbag.Keys() {
-		so := sbag.Get(s).(*toml.TomlTree)
-		groups[s] = ParseGroup(s, so)
-		//fmt.Printf("beep: %v,%v,%v\n", i, p, pbag.Get(p))
+	if data.Has("group") {
+		sbag := data.Get("group").(*toml.TomlTree)
+		for _, s := range sbag.Keys() {
+			so := sbag.Get(s).(*toml.TomlTree)
+			groups[s] = ParseGroup(s, so)
+			//fmt.Printf("beep: %v,%v,%v\n", i, p, pbag.Get(p))
 
+		}
 	}
 	return groups
 }
@@ -137,11 +145,13 @@ func ParseGroup(key string, so *toml.TomlTree) *Group {
 
 func ParseOptions(data *toml.TomlTree) *Options {
 	options := NewOptions()
-	sbag := data.Get("options").(*toml.TomlTree)
-	for _, s := range sbag.Keys() {
-		so := sbag.Get(s).(int64)
-		options.AddOption(s, int(so))
+	if data.Has("options") {
+		sbag := data.Get("options").(*toml.TomlTree)
+		for _, s := range sbag.Keys() {
+			so := sbag.Get(s).(int64)
+			options.AddOption(s, int(so))
 
+		}
 	}
 	return options
 }
