@@ -199,3 +199,7 @@ Use the -idirs function. Save the audio files from your favorite recording in on
  * From me
 
 I have recorded a fairly complete set of prayers that might be said with or in a rosary that I will eventually get uploaded. They can be used to render a complete rosary (assuming you can stand my accent!), or used to backstop your own recordings or favorites.
+
+Uploaded - Hopefully this link will work: [RosaryGen Audio Files](https://drive.google.com/drive/folders/0Bx9pm0YfmfufTEZSVHh1QmFfQ1k?usp=sharing)
+
+I divided them into three sets - basic is the prayers and elements needed for the basic structure. basic + extended has everything needed for the extended structure. Extra has additional recordings. 
