@@ -70,33 +70,37 @@ func (s *StateTracker) MatchActualFile(filename string) (string, error) {
 	return fname, errors.New(fmt.Sprintf("File '%v' was not found in any input directory.", fname))
 }
 
-func (s *StateTracker) SetDecadeNumWord(num int) {
+func (s *StateTracker) NumWord(num int) string {
 	switch num {
 	case 0:
-		s.DecadeNumWord = ""
+		return ""
 	case 1:
-		s.DecadeNumWord = "First"
+		return "First"
 	case 2:
-		s.DecadeNumWord = "Second"
+		return "Second"
 	case 3:
-		s.DecadeNumWord = "Third"
+		return "Third"
 	case 4:
-		s.DecadeNumWord = "Fourth"
+		return "Fourth"
 	case 5:
-		s.DecadeNumWord = "Fifth"
+		return "Fifth"
 	case 6:
-		s.DecadeNumWord = "Sixth"
+		return "Sixth"
 	case 7:
-		s.DecadeNumWord = "Seventh"
+		return "Seventh"
 	case 8:
-		s.DecadeNumWord = "Eighth"
+		return "Eighth"
 	case 9:
-		s.DecadeNumWord = "Ninth"
+		return "Ninth"
 	case 10:
-		s.DecadeNumWord = "Tenth"
+		return "Tenth"
 	default:
-		s.DecadeNumWord = strconv.Itoa(num)
+		return strconv.Itoa(num)
 	}
+}
+
+func (s *StateTracker) SetDecadeNumWord(num int) {
+	s.DecadeNumWord = s.NumWord(num)
 }
 
 func (s *StateTracker) XthGroupMystery() string {
@@ -108,6 +112,29 @@ func (s *StateTracker) XthGroupMystery() string {
 	default:
 		return s.DecadeNumWord + " " + s.Group + " Mystery"
 	}
+}
+
+func (s *StateTracker) XofGroup() string {
+	switch s.Group {
+	case "Preamble":
+		return "Preamble"
+	case "Postamble":
+		return "Postamble"
+	default:
+		return s.DecadeNumWord + " Of " + s.Group
+	}
+}
+
+func (s *StateTracker) FileNum() int {
+	return s.OutputFileNum
+}
+
+func (s *StateTracker) ZeroNum(num int, zeroes int) string {
+	return fmt.Sprintf("%0"+strconv.Itoa(zeroes)+"d", num)
+}
+
+func (s *StateTracker) ZeroFileNum() string {
+	return fmt.Sprintf("%03d", s.OutputFileNum)
 }
 
 func (s *StateTracker) CDTrack() string {

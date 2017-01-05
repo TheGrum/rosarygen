@@ -19,9 +19,21 @@
 
  [structure.fatima]
  name = "Extended Rosary with Fatima prayers"
- preamble = [ "signofthecross", "apostlescreed", "intentionsforrosary", "ourfather", "faith", "hailmary", "hope", "hailmary", "love", "hailmary", "glorybe", "ohmyjesus" ]
+ preamble = [ "queenoftheholyrosary", "signofthecross", "apostlescreed", "intentionsforrosary", "ourfather", "faith", "hailmary", "hope", "hailmary", "love", "hailmary", "glorybe", "ohmyjesus" ]
  group = [ "announcegroup" ]
  mystery = [ "announcemystery", "ourfather", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "hailmary", "glorybe", "ohmyjesus", "fatimapardon" ]
  postamble = [ "hailholyqueen", "marianlitany", "letuspray", "stmichael", "signofthecross" ]
 
+# Chaplet of Divine Mercy - use -groups five
+ [structure.chapletofdivinemercy]
+ name = "Chaplet of Divine Mercy"
+ preamble = ["signofthecross", "youexpiredjesus", "ohfountoflife", "ohbloodandwater", "ohbloodandwater", "ohbloodandwater", "ourfather", "hailmary", "apostlescreed"]
+ group = []
+ mystery = ["eternalfather", 
+	"sorrowfulpassion","sorrowfulpassion",
+	"sorrowfulpassion","sorrowfulpassion",
+	"sorrowfulpassion","sorrowfulpassion",
+	"sorrowfulpassion","sorrowfulpassion",
+	"sorrowfulpassion","sorrowfulpassion"]
+ postamble = ["holyimmortalone", "holyimmortalone", "holyimmortalone", "eternalgod"]
 

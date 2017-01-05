@@ -1,6 +1,9 @@
 package rosarygen
 
-import "strconv"
+import (
+	"fmt"
+	"strconv"
+)
 
 type Rosary struct {
 	Preamble  []*Prayer
@@ -203,4 +206,8 @@ func NewGroup(order int, key string, name string) *Group {
 
 func (g *Group) AddMystery(mystery int) {
 	g.Mysteries = append(g.Mysteries, mystery)
+}
+
+func (g *Group) String() string {
+	return fmt.Sprintf("%s: %s", g.Key, g.Name)
 }

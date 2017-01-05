@@ -103,7 +103,6 @@ func ParseMysteries(data *toml.TomlTree) map[string]*Mystery {
 				log.Fatalf("Could not parse '%v' as an int.", s)
 			}
 			mysteries[s] = ParseMystery(num, so)
-			//fmt.Printf("beep: %v,%v,%v\n", i, p, pbag.Get(p))
 
 		}
 	}

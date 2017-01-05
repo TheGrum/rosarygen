@@ -267,7 +267,41 @@
  name = "The Divine Praises, with silence for response"
  filename = "TheDivinePraisesCallSilence"
 
+# Prayers for Chaplets
+# The Chaplet of Divine Mercy
+
+ [prayer.youexpiredjesus]
+ name = "You expired, Jesus"
+ filename = "YouExpiredJesus"
+
+ [prayer.ohfountoflife]
+ name = "Oh Fount of Life"
+ filename = "OhFountOfLife"
+
+ [prayer.ohbloodandwater]
+ name = "Oh Blood and Water"
+ filename = "OhBloodAndWater"
+
+ [prayer.eternalfather]
+ name = "Eternal Father"
+ filename = "EternalFather"
+
+ [prayer.sorrowfulpassion]
+ name = "For the sake of His Sorrowful Passion"
+ filename = "SorrowfulPassion"
+
+ [prayer.holyimmortalone]
+ name = "Holy Immortal One"
+ filename = "HolyImmortalOne"
+
+ [prayer.eternalgod]
+ name = "Eternal God"
+ filename = "EternalGod"
+
 [mystery]
+
+ [mystery.0]
+ name = "Mystery"
 
  [mystery.1]
  name = "Annunciation"
@@ -364,3 +398,33 @@
  name = "Glorious"
  mysteries = [ 11,12,13,14,15 ]
  order = 4
+
+ [group.zero]
+ name = "Zero"
+ mysteries = []
+ order = 0
+
+ [group.one]
+ name = "One"
+ mysteries = [ 0 ]
+ order = 1
+
+ [group.two]
+ name = "Two"
+ mysteries = [ 0, 0 ]
+ order = 2
+
+ [group.three]
+ name = "Three"
+ mysteries = [ 0, 0, 0 ]
+ order = 3
+
+ [group.four]
+ name = "Four"
+ mysteries = [ 0, 0, 0, 0 ]
+ order = 4
+
+ [group.five]
+ name = "Five"
+ mysteries = [ 0, 0, 0, 0, 0 ]
+ order = 5

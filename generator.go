@@ -2,6 +2,7 @@ package rosarygen
 
 import (
 	"fmt"
+	"log"
 	"strings"
 
 	"github.com/pelletier/go-toml"
@@ -82,6 +83,10 @@ func (g *Generator) NewRosary(structure string, groups ...string) *Rosary {
 				actualGroups = append(actualGroups, newgroup)
 			}
 		}
+	}
+	_, ok := g.Structures[structure]
+	if !ok {
+		log.Fatalf("Structure %s not found.\n")
 	}
 	return NewRosary(g.Structures[structure], actualGroups, g.Mysteries, g.Prayers)
 }
