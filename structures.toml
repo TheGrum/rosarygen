@@ -37,3 +37,30 @@
 	"sorrowfulpassion","sorrowfulpassion"]
  postamble = ["holyimmortalone", "holyimmortalone", "holyimmortalone", "eternalgod"]
 
+# Chaplet of St. Michael - use -groups zero
+ [structure.chapletofstmichael]
+ name = "Chaplet of St. Michael"
+ preamble = ["cometomyassistance","glorybe",
+	"ourfather", "stmichaelchoirofseraphim",
+	"hailmary", "hailmary", "hailmary",
+	"ourfather", "stmichaelchoirofcherubim",
+	"hailmary", "hailmary", "hailmary",
+	"ourfather", "stmichaelchoirofthrones",
+	"hailmary", "hailmary", "hailmary",
+	"ourfather", "stmichaelchoirofdominions",
+	"hailmary", "hailmary", "hailmary",
+	"ourfather", "stmichaelchoirofpowers",
+	"hailmary", "hailmary", "hailmary",
+	"ourfather", "stmichaelchoirofvirtues",
+	"hailmary", "hailmary", "hailmary",
+	"ourfather", "stmichaelchoirofprincipalities",
+	"hailmary", "hailmary", "hailmary",
+	"ourfather", "stmichaelchoirofarchangels",
+	"hailmary", "hailmary", "hailmary",
+	"ourfather", "stmichaelchoirofangels",
+	"hailmary", "hailmary", "hailmary",
+	"ourfather", "ourfather", "ourfather", "ourfather",
+ 	"ohgloriousprince", "signofthecross"]
+ group = []
+ mystery = []
+ postamble = []

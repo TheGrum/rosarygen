@@ -298,6 +298,51 @@
  name = "Eternal God"
  filename = "EternalGod"
 
+# St. Michael Chaplet
+ [prayer.cometomyassistance]
+ name = "Oh God, come to my assistance."
+ filename = "ComeToMyAssistance"
+
+ [prayer.stmichaelchoirofseraphim]
+ name = "St. Michael and the Choir of Seraphim"
+ filename = "StMichaelChoirOfSeraphim"
+
+ [prayer.stmichaelchoirofcherubim]
+ name = "St. Michael and the Choir of Cherubim"
+ filename = "StMichaelChoirOfCherubim"
+
+ [prayer.stmichaelchoirofthrones]
+ name = "St. Michael and the Choir of Thrones"
+ filename = "StMichaelChoirOfThrones"
+
+ [prayer.stmichaelchoirofdominions]
+ name = "St. Michael and the Choir of Dominions"
+ filename = "StMichaelChoirOfDominions"
+
+ [prayer.stmichaelchoirofpowers]
+ name = "St. Michael and the Choir of Powers"
+ filename = "StMichaelChoirOfPowers"
+
+ [prayer.stmichaelchoirofvirtues]
+ name = "St. Michael and the Choir of Virtues"
+ filename = "StMichaelChoirOfVirtues"
+
+ [prayer.stmichaelchoirofprincipalities]
+ name = "St. Michael and the Choir of Principalities"
+ filename = "StMichaelChoirOfPrincipalities"
+
+ [prayer.stmichaelchoirofarchangels]
+ name = "St. Michael and the Choir of Archangels"
+ filename = "StMichaelChoirOfArchangels"
+
+ [prayer.stmichaelchoirofangels]
+ name = "St. Michael and the Choir of Angels"
+ filename = "StMichaelChoirOfAngels"
+
+ [prayer.ohgloriousprince]
+ name = "Oh Glorious Prince, St. Michael"
+ filename = "OhGloriousPrince"
+
 [mystery]
 
  [mystery.0]
@@ -398,6 +443,11 @@
  name = "Glorious"
  mysteries = [ 11,12,13,14,15 ]
  order = 4
+
+ [group.none]
+ name = "None"
+ mysteries = []
+ order = 0
 
  [group.zero]
  name = "Zero"
