@@ -57,26 +57,9 @@ func (r *Rosary) GetPrayers() []*Prayer {
 	return s
 }
 
-func (r *Rosary) ForEachFile(idirs []string, odir string, outputFilename string, format string, o OptionProvider, f func(filename string, p *Prayer, s *StateTracker)) {
-	s := &StateTracker{
-		InputDirs: idirs,
-		OutputDir: odir,
-		Format:    format,
-
-		Group:         "Preamble",
-		DecadeNumWord: "",
-		Mystery:       "",
-		Prayer:        "",
-
-		OutputFileNum: 0,
-		InputFileNum:  0,
-		GroupNum:      1,
-		MysteryNum:    0,
-		PrayerNum:     0,
-		HailMaryNum:   0,
-
-		OutputFilenameTemplate: outputFilename,
-		LastFilename:           "",
+func (r *Rosary) ForEachFile(idirs []string, odir string, outputFilename string, format string, o OptionProvider, f func(filename string, p *Prayer, s *StateTracker), s *StateTracker) {
+	if s == nil {
+		s = NewStateTracker(idirs, odir, outputFilename, format)
 	}
 
 	for _, p := range r.Preamble {
@@ -93,6 +76,14 @@ func (r *Rosary) ForEachFile(idirs []string, odir string, outputFilename string,
 		p.ForEachFile(o, s, f)
 	}
 	f("", nil, nil)
+}
+
+func (r *Rosary) RenderToFiles(idirs []string, odir string, outputFilename string, format string, o OptionProvider, gapLength int, s *StateTracker) {
+	ch := make(chan *FileStack)
+	go r.ForEachFile(idirs, odir, outputFilename, format, o, GetFiles(ch), s)
+	for f := range ch {
+		f.RenderWav(gapLength)
+	}
 }
 
 type Decade struct {

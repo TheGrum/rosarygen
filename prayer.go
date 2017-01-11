@@ -78,6 +78,7 @@ func (p *Prayer) ForEachFile(o OptionProvider, s *StateTracker, f func(filename 
 	for _, file := range r {
 		s.InputFileNum += 1
 		s.Prayer = p.Key
+		s.PrayerName = p.Name
 		ofile := s.Apply(file)
 		f(ofile, p, s)
 	}

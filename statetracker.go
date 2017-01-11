@@ -22,6 +22,7 @@ type StateTracker struct {
 	Mystery       string
 	MysteryPhrase string
 	Prayer        string
+	PrayerName    string
 
 	OutputFileNum int
 	InputFileNum  int
@@ -32,6 +33,31 @@ type StateTracker struct {
 
 	OutputFilenameTemplate string
 	LastFilename           string
+}
+
+func NewStateTracker(idirs []string, odir string, outputFilename string, format string) *StateTracker {
+	return &StateTracker{
+		InputDirs: idirs,
+		OutputDir: odir,
+		Format:    format,
+
+		Group:         "Preamble",
+		DecadeNumWord: "",
+		Mystery:       "",
+		Prayer:        "",
+		PrayerName:    "",
+
+		OutputFileNum: 0,
+		InputFileNum:  0,
+		GroupNum:      1,
+		MysteryNum:    0,
+		PrayerNum:     0,
+		HailMaryNum:   0,
+
+		OutputFilenameTemplate: outputFilename,
+		LastFilename:           "",
+	}
+
 }
 
 func (s *StateTracker) UpdateFilename() (filenameChanged bool) {

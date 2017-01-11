@@ -3,7 +3,9 @@ package main
 import (
 	"flag"
 	"fmt"
+	"io"
 	"log"
+	"os"
 	"sort"
 	"strconv"
 	"strings"
@@ -77,18 +79,40 @@ func main() {
 			return
 		}
 
+		if flag.Arg(0) == "RenderList" {
+			// Here we are rendering a whole
+			// series of rosaries/prayers
+			var stream io.Reader
+			var err error
+			if flag.NArg() > 1 {
+				if flag.Arg(1) == "-" {
+					stream = os.Stdin
+				} else {
+					stream, err = os.Open(flag.Arg(1))
+					if err != nil {
+						log.Fatal(err)
+					}
+				}
+			} else {
+				stream = os.Stdin
+			}
+			g.RenderList(stream)
+			return
+		}
+
 		// If we get here, they want something from a calculated rosary, so prepare it
 		var r *rosarygen.Rosary
-		switch strings.ToLower(*mysteryGroups) {
-		case "all":
-			r = g.NewRosary(*structure, "joyful", "luminous", "sorrowful", "glorious")
-		case "old":
-			r = g.NewRosary(*structure, "joyful", "sorrowful", "glorious")
-		case "custom":
-			r = g.NewRosary(*structure, strings.Split(strings.ToLower(*customMysteries), ",")...)
-		default:
-			r = g.NewRosary(*structure, strings.ToLower(*mysteryGroups))
-		}
+		r = g.NewRosary(*structure, g.GroupsForRosary(*mysteryGroups, *customMysteries)...)
+		//		switch strings.ToLower(*mysteryGroups) {
+		//		case "all":
+		//			r = g.NewRosary(*structure, "joyful", "luminous", "sorrowful", "glorious")
+		//		case "old":
+		//			r = g.NewRosary(*structure, "joyful", "sorrowful", "glorious")
+		//		case "custom":
+		//			r = g.NewRosary(*structure, strings.Split(strings.ToLower(*customMysteries), ",")...)
+		//		default:
+		//			r = g.NewRosary(*structure, strings.ToLower(*mysteryGroups))
+		//		}
 		if r == nil {
 			log.Fatal("No Rosary generated.")
 		}
@@ -102,25 +126,15 @@ func main() {
 			onBadFileFunc := func(filename string, err error) {
 				fmt.Printf("%v: %v\n", filename, err)
 			}
-			r.ForEachFile(inputdirs, *odir, *ofilename, *format, g.Options, rosarygen.GetBadFilenamesFunc(onBadFileFunc))
+			r.ForEachFile(inputdirs, *odir, *ofilename, *format, g.Options, rosarygen.GetBadFilenamesFunc(onBadFileFunc), nil)
 		case "ActualFiles":
-			r.ForEachFile(inputdirs, *odir, *ofilename, *format, g.Options, rosarygen.PrintActualFilename)
+			r.ForEachFile(inputdirs, *odir, *ofilename, *format, g.Options, rosarygen.PrintActualFilename, nil)
 		case "Render":
-			ch := make(chan *rosarygen.FileStack)
-			go r.ForEachFile(inputdirs, *odir, *ofilename, *format, g.Options, rosarygen.GetFiles(ch))
-			switch *format {
-			case "wav":
-				for f := range ch {
-					f.RenderWav(*gap)
-					//fmt.Println(f)
-				}
-			case "flac":
-				fmt.Printf("Not implemented yet.")
-				//				for f := range ch {
-				//					f.RenderFlac(*gap)
-				//					fmt.Println(f)
-				//				}
+			if *format == "flac" {
+				log.Fatal("Not implemented yet.")
 			}
+			r.RenderToFiles(inputdirs, *odir, *ofilename, *format, g.Options, *gap, nil)
+
 		}
 	}
 }

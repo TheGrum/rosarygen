@@ -90,6 +90,7 @@ Commands below this point actually apply the selected rosary structure, and oper
 
  * Render - this is the real deal - opens each actual file in turn, streaming them into the final output file[s]
 
+ * RenderList - even 'realer' deal - if you are composing an MP3 CD as opposed to an Audio one, a rosary will fill only a tiny portion of it. RenderList lets you prepare a file to feed RosaryGen to produce multiple rosaries, chaplets, and prayers to fill such a CD.
 
 ### Filename Template
 
@@ -99,13 +100,14 @@ The output filename parameter `-ofilename` uses Go Templates, which need a littl
 
 Default, suitable for one file per group of mysteries (fine for mp3 players/phones):
 -ofilename "{{.GroupNum}} {{.Group}} Mysteries"
+
  * 1 Preamble Mysteries.wav
  * 2 Joyful Mysteries.wav
  * . . .
  * 6 Postamble Mysteries.wav
 
 Suitable for CD Track titles:
--ofilename "{{.OutputFileNum | printf \"%02d\"}} {{.XthGroupMystery}}" or -ofilename "{{.CDTrack}}
+-ofilename "{{.OutputFileNum | printf \"%02d\"}} {{.XthGroupMystery}}" or -ofilename "{{.ZeroNum .OutputFileNum 2}} {{.XthGroupMystery}}" or -ofilename "{{.CDTrack}}
 
  * 01 Preamble.wav
  * 02 First Joyful Mystery.wav
@@ -117,13 +119,16 @@ Suitable for CD Track titles:
  * Group - "Preamble", "Postamble", "Joyful", "Luminous", "Sorrowful", "Glorious"
  * DecadeNumWord - "First", "Second", "Third", etc - which mystery in this group are we on
  * Mystery - "Transfiguration", "Scourging", etc...
+ * PrayerName - prayer name including spaces, commas, etc.
  * OutputFileNum - this cannot itself trigger a change in output file, but when a change occurs, it is incremented
  * GroupNum - counts up
  * MysteryNum - this is the mystery number from the configuration file, NOT a counting number. It can be out of order.
  * PrayerNum - counts up
  * HailMaryNum - counts Hail Mary's within a Mystery
  * XthGroupMystery - function that returns the commonly used 'First/Second/Third/etc Joyful/Sorrowful/etc Mystery' form of name.
+ * XofGroup - "Preamble/First Of Five/Postamble" - useful when using groups one/two/three/four/five,etc
  * CDTrack - provides an easier CD track title using a file number formatted with 2 digits including a leading zero so that alphabetical sorting gives the proper order. If you need 3 or more digits, see the CD Track example above for the in-template way of doing this, where you can change the 02 to the desired number of digits.
+ 
 
 ## Effect
 
@@ -149,6 +154,100 @@ A missing option will be interpreted as a 1.
 The options.toml file may *also* contain [prayer] and [structure] entries - see prayers.toml and structures.toml for examples. An entry in the options.toml will replace an identically keyed entry in the prayers.toml or structures.toml file.
 
 Filenames defined on prayers are *also* templated on the same running status used for the output filename. This is particularly relevant for defining audio files that need to differ for each mystery (such as announcing the mystery, or a meditation for a mystery, etc), and examples of this may also be found in the prayers.toml file.
+
+### RenderList
+
+Call with rosarygen RenderList filename, or pipe into rosarygen RenderList. OutputFileNums will increment continually across all rendered files.
+
+The file format understands four line types:
+
+ * Parameter setting - has '=' in it somewhere, parameters are same as on command line, with one addition - filenum will override the current filenum
+
+```idirs=rosary/basic,rosary/extended,rosary/extra,rosary/chaplets gap=3 odir=test ofilename={{.CDTrack}} structure=extended
+ ```
+
+If structure= is present, this will Render that structure to the disk. Spaces in parameters must be escaped with '\\'.
+
+```ofilename={{.ZeroNum\ .OutputFileNum\\ 2}}\ {{.PrayerName}}```
+
+ * Rendering - has neither '=' nor '\[', may have a comma - always in the form 'structure' or 'structure,groups'. As a special bit of magic for RenderList, if structure is the name of a prayer instead of a structure, it will dynamically create a structure with that single prayer in the preamble and Render it.
+
+```basic,all```
+```extended,old```
+
+ * Literal structure - has '[', no '=' - dynamically creates a structure and then renders it
+
+```[signofthecross,ourfather,hailmary,glorybe,signofthecross]```
+
+ * Comments - start with '#', are ignored
+
+## Example RenderList
+
+```
+idirs=example,rosary/basic,rosary/extended,rosary/extra,rosary/chaplets gap=3 odir=test ofilename={{.CDTrack}}
+structure=example
+ofilename={{.ZeroNum\ .OutputFileNum\ 2}}\ Chaplet\ of\ Divine\ Mercy\ {{.XofGroup}}
+chapletofdivinemercy,five
+ofilename={{.ZeroNum\ .OutputFileNum\ 2}}\ Chaplet\ of\ St.\ Michael
+chapletofstmichael,none
+ofilename={{.ZeroNum\ .OutputFileNum\ 2}}\ {{.PrayerName}}
+memorare
+magnificat
+divinepraises
+ohmary
+queenofheavenrejoice
+queenoftheholyrosary
+augustqueenofheaven
+comeohcreatorspirit
+hailbrightstarofocean
+ofilename={{.ZeroNum\ .OutputFileNum\ 2}}\ Common\ Setting
+[signofthecross,ourfather,hailmary,glorybe,signofthecross]
+```
+
+## Produces:
+
+```
+File test/01 Preamble.wav written.
+File test/02 First Joyful Mystery.wav written.
+File test/03 Second Joyful Mystery.wav written.
+File test/04 Third Joyful Mystery.wav written.
+File test/05 Fourth Joyful Mystery.wav written.
+File test/06 Fifth Joyful Mystery.wav written.
+File test/07 First Luminous Mystery.wav written.
+File test/08 Second Luminous Mystery.wav written.
+File test/09 Third Luminous Mystery.wav written.
+File test/10 Fourth Luminous Mystery.wav written.
+File test/11 Fifth Luminous Mystery.wav written.
+File test/12 First Sorrowful Mystery.wav written.
+File test/13 Second Sorrowful Mystery.wav written.
+File test/14 Third Sorrowful Mystery.wav written.
+File test/15 Fourth Sorrowful Mystery.wav written.
+File test/16 Fifth Sorrowful Mystery.wav written.
+File test/17 First Glorious Mystery.wav written.
+File test/18 Second Glorious Mystery.wav written.
+File test/19 Third Glorious Mystery.wav written.
+File test/20 Fourth Glorious Mystery.wav written.
+File test/21 Fifth Glorious Mystery.wav written.
+File test/22 Postamble.wav written.
+File test/23 Chaplet of Divine Mercy Postamble.wav written.
+File test/24 Chaplet of Divine Mercy First Of Five.wav written.
+File test/25 Chaplet of Divine Mercy Second Of Five.wav written.
+File test/26 Chaplet of Divine Mercy Third Of Five.wav written.
+File test/27 Chaplet of Divine Mercy Fourth Of Five.wav written.
+File test/28 Chaplet of Divine Mercy Fifth Of Five.wav written.
+File test/29 Chaplet of Divine Mercy Postamble.wav written.
+File test/30 Chaplet of St. Michael.wav written.
+File test/31 Memorare.wav written.
+File test/32 Magnificat.wav written.
+File test/33 The Divine Praises.wav written.
+File test/34 Oh, Mary.wav written.
+File test/35 Queen of Heaven, Rejoice.wav written.
+File test/36 Queen of the Holy Rosary.wav written.
+File test/37 August Queen of Heaven.wav written.
+File test/38 Come Oh Creator Spirit Blest.wav written.
+File test/39 Hail, Bright Star of Ocean.wav written.
+File test/40 Common Setting.wav written.
+```
 
 ### Caveats/Known Problems
 

@@ -267,6 +267,10 @@
  name = "The Divine Praises, with silence for response"
  filename = "TheDivinePraisesCallSilence"
 
+ [prayer.hailbrightstarofocean]
+ name = "Hail, Bright Star of Ocean"
+ filename = "HailBrightStarOfOcean"
+
 # Prayers for Chaplets
 # The Chaplet of Divine Mercy
 
@@ -342,6 +346,10 @@
  [prayer.ohgloriousprince]
  name = "Oh Glorious Prince, St. Michael"
  filename = "OhGloriousPrince"
+
+ [prayer.comeohcreatorspirit]
+ name = "Come Oh Creator Spirit Blest"
+ filename = "ComeOhCreatorSpirit"
 
 [mystery]
 

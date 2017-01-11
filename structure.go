@@ -1,5 +1,7 @@
 package rosarygen
 
+import "strings"
+
 type Structure struct {
 	Key       string
 	Name      string
@@ -18,6 +20,30 @@ func NewStructure(key string, name string) *Structure {
 		Mystery:   make([]string, 0, 20),
 		Postamble: make([]string, 0, 10),
 	}
+}
+
+func StructureForPrayer(prayer string) *Structure {
+	return &Structure{
+		Key:       prayer,
+		Name:      prayer,
+		Preamble:  []string{prayer},
+		Group:     []string{},
+		Mystery:   []string{},
+		Postamble: []string{},
+	}
+}
+
+func StructureForPrayers(prayers string) *Structure {
+	ps := strings.Split(prayers, ",")
+	return &Structure{
+		Key:       ps[0],
+		Name:      ps[0],
+		Preamble:  ps,
+		Group:     []string{},
+		Mystery:   []string{},
+		Postamble: []string{},
+	}
+
 }
 
 func (s *Structure) AddPreamble(preamble string) {
