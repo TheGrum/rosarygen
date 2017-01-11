@@ -167,13 +167,13 @@ The file format understands four line types:
 idirs=rosary/basic,rosary/extended,rosary/extra,rosary/chaplets gap=3 odir=test ofilename={{.CDTrack}} structure=extended
  ```
 
-If structure= is present, this will Render that structure to the disk. Spaces in parameters must be escaped with '\\'.
+If structure= is present, this will Render that structure to the disk. Spaces in parameters must be escaped with '\'.
 
 ```
-ofilename={{.ZeroNum\ .OutputFileNum\\ 2}}\ {{.PrayerName}}
+ofilename={{.ZeroNum\ .OutputFileNum\ 2}}\ {{.PrayerName}}
 ```
 
- * Rendering - has neither '=' nor '\[', may have a comma - always in the form 'structure' or 'structure,groups'. As a special bit of magic for RenderList, if structure is the name of a prayer instead of a structure, it will dynamically create a structure with that single prayer in the preamble and Render it.
+ * Rendering - has neither '=' nor '[', may have a comma - always in the form 'structure' or 'structure,groups'. As a special bit of magic for RenderList, if structure is the name of a prayer instead of a structure, it will dynamically create a structure with that single prayer in the preamble and Render it.
 
 ```
 basic,all
